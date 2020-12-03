@@ -12,9 +12,10 @@ let read_set filename : (int, Int.comparator_witness) Set.t =
     ~f:(fun acc num -> Set.add acc num)
     numbers
 
+(* The executable entry point is here *)
 let () =
   let input = Sys.argv.(1) in
-  log "Filename: %s\n%!" input;
+  log "Filename: %s" input;
 
   let set = read_set input in
 
@@ -24,7 +25,8 @@ let () =
     ~f:(fun first ->
       let second = 2020 - first in
       if Set.mem set second then
-        log "First: %d Second: %d Product: %d" first second (first * second));
+        let product = first * second in
+        log "First: %d Second: %d Product: %d" first second product);
 
   (* Part 2 *)
   Set.iter
