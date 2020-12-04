@@ -10,3 +10,10 @@ I got it all to almost work, though:
 - OPAM 2.0.7
 - Dune 2.7.1
 - OCaml Platform extension - it was angry for a while, until I deleted my older, default switch and found where it was being used in the settings.json 
+
+## Day 3
+Solved Part 1 with my 10-year-old, pair programming. He was really bored. I understand.
+
+## Day 4
+Part 2 was a lot of work, for weeknight fun. Installed PCRE and wrote the validation code. The code worked on first try, though, so that's good.
+Still hoping to start at 9PM sharp. Today, started around 9:25 or so.
