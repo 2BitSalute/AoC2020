@@ -12,7 +12,6 @@ let read_input filename : string list =
 let small_input = "FBFBBFFRLR"
 
 (* Rows 0-127, columns 0-7 *)
-
 type t = {
   row: int;
   col: int;
@@ -21,16 +20,12 @@ type t = {
 
 let rec bin_search (spec: char list) ~(low: int) ~(high: int) : int =
   match spec with
-  | [] ->
-    log "FINALLY %d - %d" low high;
-    low
+  | [] -> low
   | 'L' :: spec ->
     let high = low + (high - low) / 2 in
-    log "%c: Keeping %d - %d" 'L' low high;
     bin_search spec ~low ~high
   | 'R' :: spec ->
     let low = low + (high - low + 1) / 2 in
-    log "%c: Keeping %d - %d" 'R' low high;
     bin_search spec ~low ~high
   | direction :: _spec ->
     failwith (Printf.sprintf "Unrecognized direction: %c" direction) 
@@ -46,13 +41,9 @@ let parse_seat (raw: string) : t =
     |> String.to_list
     |> List.map ~f:map_fb_to_lr
   in
-  log "row spec: %s raw: %s" (String.sub raw ~pos:0 ~len:7) raw;
   let col_spec = String.sub raw ~pos:7 ~len:3 |> String.to_list in
-  log "col spec: %s" (String.sub raw ~pos:7 ~len:3);
   let row = bin_search row_spec ~low:0 ~high:127 in
-  log "row: %d" row;
   let col = bin_search col_spec ~low:0 ~high:7 in
-  log "col: %d" col;
   {
     row;
     col;
