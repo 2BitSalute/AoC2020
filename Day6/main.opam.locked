@@ -1,0 +1,26 @@
+opam-version: "2.0"
+maintainer: ["2BitSalute"]
+authors: ["2BitSalute"]
+depends: [
+  "base-threads" {= "base"}
+  "base-unix" {= "base"}
+  "dune" {= "2.7.1"}
+  "ocaml" {= "4.11.1"}
+  "ocaml-config" {= "1"}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+name: "main"
+version: "dev"
